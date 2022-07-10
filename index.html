@@ -1,11 +1,32 @@
 <style>
+  body {
+    display: flex;
+  }
   input {
     height: 60px;
     width: 60px;
+    /* background: white; */
   }
   button {
     height: 60px;
     width: 58px;
+    margin: 10px;
+  }
+  p {
+    width: 200px;
+  }
+  #textContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+  }
+  #sudokuInput {
+    width: 200px;
+    height: 30px;
+  }
+  #submit {
+    width: 60px;
+    height: 30px;
   }
   #mainContainer {
     background: black;
@@ -15,12 +36,35 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
+  #numSelectorContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 460px;
+    margin-left: 50px;
+  }
   .section {
     width: 180px;
     height: 180px;
   }
 </style>
 <body>
-  <div id="mainContainer"></div>
+  <div id="textContainer">
+    <h1>Sudoku Solver</h1>
+    <div style="transform: translateY(-150px)">
+      <div style="display: flex">
+        <input id="sudokuInput" type="text" />
+        <input id="submit" type="submit" onsubmit="" />
+      </div>
+      <p>
+        Enter the sudoku's values of each section left to right then top to
+        bottom using 0 as an empty space
+      </p>
+    </div>
+  </div>
+  <div id="bigContainer">
+    <div id="mainContainer"></div>
+  </div>
+  <div id="numSelectorContainer"></div>
 </body>
 <script src="index.js"></script>
