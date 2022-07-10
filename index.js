@@ -73,6 +73,8 @@ class Box {
   }
 
   update() {
+    if (this.element.value && board.selectedNum)
+      this.element.style.background = "red";
     if (this.element.value && this.element.value == board.selectedNum) {
       for (let i = 0; i < board.sections.length; i++) {
         if (board.sections[i].includes(this)) {
