@@ -1,5 +1,7 @@
 const mainContainer = document.getElementById("mainContainer");
-const body = document.querySelector("body");
+const numContainer = document.getElementById("numSelectorContainer");
+const sudokuInput = document.getElementById("sudokuInput");
+const submit = document.getElementById("submit");
 
 class Board {
   constructor() {
@@ -53,6 +55,17 @@ class Board {
 
   update() {
     onclick = (e) => {
+      if (e.target == submit) {
+        let values = sudokuInput.value;
+        sudokuInput.value = "";
+        values = Array.from(values);
+        for (let i = 0; i < values.length; i++) {
+          if (values[i] != 0) {
+            this.boxes[i].number = values[i];
+            this.boxes[i].element.value = values[i];
+          }
+        }
+      }
       this.boxes.forEach((box) => (box.element.style.background = "white"));
       this.boxes.forEach((box) => box.update());
       this.checks.forEach((check) => {
@@ -106,7 +119,7 @@ class NumSelector {
     this.element = document.createElement("button");
     if (number < 10) this.element.innerHTML = number;
     else if (number == 10) this.element.innerHTML = "Clear";
-    body.appendChild(this.element);
+    numContainer.appendChild(this.element);
   }
 
   update() {}
